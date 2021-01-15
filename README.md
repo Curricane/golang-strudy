@@ -12,11 +12,40 @@
 - `fmt.Scanf(format string, a… interface{})` 格式话输入，空格作为分隔符，`,`占位符，使用时，最好以`\n`结尾，不然会读入`\n`给下一个`Scanf`如，`fmt.Scanf("%b\n", &b)`
 - `fmt.Scan(a… interface{})`: 从终端获取用户输入，存储在`Scan`中的参数里，空格和换行符作为分隔符
 - `fmt.Scanln(a… interface{})`: 从终端获取用户输入，存储在`Scanln`中的参数里，空格符作为分隔符，遇到换行符结束
-## fmt 从字符串中获取输入
+### fmt 从字符串中获取输入
 用法如上，只是源换成了字符串，多了一个字符串参数
 - fmt.Ssacnf
 - fmt.Sscan
 - fmt.Sscanln
+## 字符串
+- 字符串不可修改，想要修改得创建一个新的字符串.可以先
+### 字符串长度
+>	字符串的底层时byte数组，len()计算字符串长度计算的是byte数组的长度
+	而string是utf8编码的，`故字符数不一定等于字符串长度特别是含有中文的时候`。
+	rune类型用来表示utf8字符的，一个rune字符由一个或者多个byte组成。
+### 转换
+- 字符串与字节切片的转换
+```golang
+var buff  []byte
+buff = []byte("hello")
+str := string(buff)
+```
+- 字符串转rune切片
+```golang
+var runeSlice []rune
+runeSlice = []rune(str)
+len(runeSlice)  //得到字符数
+```
+### 字符串拼接
+- `strings.Builder`
+    - 速度快，内存分配多一点，需要拼接大量字符串优先考虑
+- `strings.Join`拼接
+    - 比+号连接快一点
+- `+`号拼接
+    - 便利，简短拼接考虑
+- `fmt.Sprintf`拼接
+    - 速度最慢
+    - 需要格式化拼接时优先考虑
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
