@@ -46,6 +46,22 @@ len(runeSlice)  //得到字符数
 - `fmt.Sprintf`拼接
     - 速度最慢
     - 需要格式化拼接时优先考虑
+## time包
+- 获取当前时间
+    > `now := time.Now()`
+- 获取时间戳
+    > `timestamp := time.Now().Unix()  秒`
+    > `timestamp := time.Now().UnixNano()  纳秒`
+- 时间戳转化为时间
+    > `time.Unix(timestamp, 0)`
+- 定时器
+    > `ticker := time.Tick(time.Second)` 每隔1秒响1次
+    > `after := time.After(time.Second)` 1秒后响1次
+- 计算程序耗时
+    > `start := time.Now()`
+    > `t := time.Since(start) //得到耗时`
+- 时间转换日期
+    > `t1 := now.Format("2006-01-02 15:04:05")` 巧记 2006 1 2 3 4 5
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
