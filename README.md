@@ -140,6 +140,8 @@ switch a_interface.(type) {
 > 注意a_interface 一定要是个接口，不是接口，可以通过interface{}()来转换为一个接口
 - `类型的指针类型实现接口的方法，不等于值类型实现了接口方法`
 > 原因：如果一个变量存储在接口的变量之中，那么是获取不到这个变量的地址。
+## 静态类型与动态类型
+[静态类型与动态类型](./静态类型与动态类型.md)
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
