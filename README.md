@@ -97,6 +97,34 @@ len(runeSlice)  //得到字符数
         */
     }
     ```
+## io操作
+- 读
+    - 打开文件用os包中的接口，再读
+    ```golang
+    file, err := os.Open("/boolee/1.txt") 只读
+    file, err := os.OpenFile("boo;ee/1.txt", os.O_RDONLY, 0666) 
+    n, err := file.Read(bslice)
+    buffio
+    reader := buffio.NewReader(file)
+    by, err := reader.ReadBytes("\n")
+    ```
+    - ioutil中的接口
+    ```golang
+    re, err := ioutil.ReadFile(file) //一次性读取全部文件
+    ```
+- 写
+    - os中的File
+    ```golang
+    file, err := os.OpenFile("boo;ee/1.txt", os.O_RDONLY, 0666)
+    n, err := file.Write(bslice)
+    ```
+    - buffio中的接口，使用缓存最好Flush一下
+    ```golang
+    writer := buffio.NewWriter(file)
+    n, err := write.Write(bslice)
+    ```
+    - ioutil中的接口
+    ```ioutil.WriteFile("/boolee/1.txt", bslice, 0666)```
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
