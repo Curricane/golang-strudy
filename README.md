@@ -62,6 +62,41 @@ len(runeSlice)  //得到字符数
     > `t := time.Since(start) //得到耗时`
 - 时间转换日期
     > `t1 := now.Format("2006-01-02 15:04:05")` 巧记 2006 1 2 3 4 5
+## 闭包
+函数未通过参数列表直接使用外部变量，将与其组成一个整体。
+> 注意：
+> 1，必包函数存活期间始终有外部变量（如x）
+> 2，可以通过给内部函数传值（如x），防止出现闭包，因为有时我们不想使用闭包，而没有发现已经闭包了
+- 闭包的意义&作用
+    - 缩小变量作用域，减少对全局变量的污染，实现有自身状态的函数
+    ```golang
+    func adder() func(int) int {
+	    sum := 0
+        return func(x int) int {
+            sum += x
+            return sum
+
+        }
+    }
+    func test4() {
+        myAdder := adder()
+        myAdder2 := adder()
+
+        // 从1加到10
+
+        for i := 1; i <= 10; i++ {
+            myAdder(i)
+            myAdder2(i)
+        }
+        myAdder(1)
+        fmt.Println("myadder", myAdder(0)) // 56
+        fmt.Println("myadder2", myAdder2(0)) // 55
+        /*
+        myAdder myAdder2 都能利用闭包的特性，实现累加，且累加互不影响
+        一定程度的有了自身的状态，能替代全局变量的作用，还能有多个变量互不影响
+        */
+    }
+    ```
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
