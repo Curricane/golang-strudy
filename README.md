@@ -1,4 +1,22 @@
 # golang-strudy
+## fmt
+### 基础的格式化输出
+- %t 是格式化输出
+- %v 相应值的默认格式,是万能占位符，可以在不知道变量是什么类型的时候使用。
+    - %#v 相应值的Go语法表示
+    - %+v 打印结构体时，会添加字段名
+- %T 打印类型
+- %s 字符串
+- %p 指针
+### fmt 从终端获取用户的输入
+- `fmt.Scanf(format string, a… interface{})` 格式话输入，空格作为分隔符，`,`占位符，使用时，最好以`\n`结尾，不然会读入`\n`给下一个`Scanf`如，`fmt.Scanf("%b\n", &b)`
+- `fmt.Scan(a… interface{})`: 从终端获取用户输入，存储在`Scan`中的参数里，空格和换行符作为分隔符
+- `fmt.Scanln(a… interface{})`: 从终端获取用户输入，存储在`Scanln`中的参数里，空格符作为分隔符，遇到换行符结束
+## fmt 从字符串中获取输入
+用法如上，只是源换成了字符串，多了一个字符串参数
+- fmt.Ssacnf
+- fmt.Sscan
+- fmt.Sscanln
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
