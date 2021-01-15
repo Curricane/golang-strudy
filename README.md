@@ -124,7 +124,9 @@ len(runeSlice)  //得到字符数
     n, err := write.Write(bslice)
     ```
     - ioutil中的接口
-    ```ioutil.WriteFile("/boolee/1.txt", bslice, 0666)```
+    ```
+    ioutil.WriteFile("/boolee/1.txt", bslice, 0666)
+    ```
 ## for range细节
 range关键字是Go语言中一个非常有用的迭代array，slice，map, string, channel中元素的内置关键字。
 - 使用方式`for xxx := range [range表达式]`
