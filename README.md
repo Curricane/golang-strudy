@@ -46,6 +46,23 @@ len(runeSlice)  //得到字符数
 - `fmt.Sprintf`拼接
     - 速度最慢
     - 需要格式化拼接时优先考虑
+- ''与""与反引号
+    > 'a' 数据是rune类型
+    > "a" 是字符串类型，其实就是byte数组，s[0]是byte类型
+    > 反引号也是字符串，但支持换行
+- 遍历字符串的方式与区别
+    - 通过索引遍历，得到的是byte类型
+    ```golang
+    for i:=0; i<len(s); i++ {
+        v := s[i] // s[i]是byte类型
+    }
+    ```
+    - 通过range遍历得到的是rune类型
+    ```golang
+    for i, r := range s {
+        v := r // r 是rune类型
+    }
+    ```
 ## time包
 - 获取当前时间
     > `now := time.Now()`
