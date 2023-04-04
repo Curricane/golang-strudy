@@ -1,4 +1,4 @@
-# golang-strudy
+# golang-study
 ## fmt
 ### 基础的格式化输出
 - %t 是格式化输出
